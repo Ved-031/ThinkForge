@@ -8,12 +8,11 @@ interface QuizResultPageProps {
 const QuizResultPage = async ({ params }: QuizResultPageProps) => {
 
     const { quizId } = await params;
-    if(!quizId) {
+    if (!quizId) {
         throw new Error("Quiz ID is required");
     }
 
     const quiz = Quizzes.find(q => q.id === quizId);
-
     if (!quiz) {
         throw new Error(`Quiz with ID ${quizId} not found`);
     }

@@ -43,14 +43,16 @@ export const SolveQuiz = ({ quiz }: SolveQuizProps) => {
     }
 
     const onSubmit = () => {
-        if(!selectedOptions[question.id]) {
+        if (!selectedOptions[question.id]) {
             setError("Please select an option for the last question before submitting.");
             return;
         }
 
         setError("");
-        localStorage.removeItem(`${quiz.id}`);
-        localStorage.setItem(`${quiz.id}`, JSON.stringify(selectedOptions));
+
+        const existing = JSON.parse(localStorage.getItem('attemptedQuizzes') || '{}');
+        existing[quiz.id] = selectedOptions;
+        localStorage.setItem('attemptedQuizzes', JSON.stringify(existing));
 
         toast.success("Quiz submitted!");
 

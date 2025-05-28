@@ -7,6 +7,7 @@ import { Quiz } from "@/types";
 import { Button } from "@/components/ui/button";
 import { PageHeading } from "@/components/page-heading";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { useEffect, useState } from "react";
 
 
 interface ResultProps {
@@ -16,18 +17,16 @@ interface ResultProps {
 export const Result = ({ quiz }: ResultProps) => {
 
     const router = useRouter();
+    const [selectedOptions, setSelectedOptions] = useState<Record<string, string>>({});
 
-    const selectedOptions = localStorage.getItem(quiz.id);
-    if(!selectedOptions) {
-        return (
-            <div className="">
-                <h2>No results found for this quiz.</h2>
-            </div>
-        );
-    }
+    useEffect(() => {
+        if (typeof window === "undefined") return;
+        const attemptedQuizzes = JSON.parse(localStorage.getItem("attemptedQuizzes") || "{}");
+        const result = attemptedQuizzes[quiz.id];
+        setSelectedOptions(result);
+    }, [quiz.id]);
 
-    const parsedOptions = JSON.parse(selectedOptions);
-    if (!parsedOptions || Object.keys(parsedOptions).length === 0) {
+    if (!selectedOptions) {
         return (
             <div className="">
                 <h2>No results found for this quiz.</h2>
@@ -36,7 +35,7 @@ export const Result = ({ quiz }: ResultProps) => {
     }
 
     const correctAnswers = quiz.questions.reduce((count, question) => {
-        const userAnswerId = parsedOptions[question.id];
+        const userAnswerId = selectedOptions[question.id];
         if (userAnswerId && question.correctOptionId === userAnswerId) {
             return count + 1;
         }
@@ -56,7 +55,7 @@ export const Result = ({ quiz }: ResultProps) => {
                 <CardContent>
                     <ul className="space-y-4">
                         {quiz.questions.map((question) => {
-                            const userAnswerId = parsedOptions[question.id];
+                            const userAnswerId = selectedOptions[question.id];
                             const isCorrect = question.correctOptionId === userAnswerId;
                             return (
                                 <li key={question.id} className={`p-4 border rounded ${isCorrect ? 'bg-green-50 border-gray-100' : 'bg-red-50 border-red-100'}`}>

@@ -51,7 +51,7 @@ const CreateQuizPage = () => {
     };
 
     return (
-        <div className="h-full bg-gray-100">
+        <div className="h-full">
             <PageHeading
                 title="Create a New Quiz"
                 helperText="Use the form below to generate a quiz with AI."

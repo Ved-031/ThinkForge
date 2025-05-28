@@ -3,7 +3,7 @@
 import { format } from "date-fns";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { ListChecks, Trash } from "lucide-react";
+import { CirclePlay, ListChecks, Trash } from "lucide-react";
 
 import { Quiz } from "@/types";
 
@@ -14,9 +14,16 @@ import { Card, CardContent, CardDescription, CardFooter, CardTitle } from "@/com
 import { DeleteQuizDialog } from "./delete-quiz-dialog";
 
 
-export const QuizCard = ({ quiz }: { quiz: Quiz }) => {
+interface QuizCardProps {
+    quiz: Quiz;
+    isSolved?: boolean;
+}
+
+
+export const QuizCard = ({ quiz, isSolved }: QuizCardProps) => {
     const router = useRouter();
     const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
+
     return (
         <>
             <DeleteQuizDialog open={openDeleteDialog} onOpen={setOpenDeleteDialog} />
@@ -27,9 +34,15 @@ export const QuizCard = ({ quiz }: { quiz: Quiz }) => {
                             <CardTitle>{quiz.topic}</CardTitle>
                             <CardDescription>{quiz.subject}</CardDescription>
                         </div>
-                        <Button variant={"outline"} size={"icon"} onClick={() => setOpenDeleteDialog(true)}>
-                            <Trash size={16} className="text-destructive cursor-pointer" />
-                        </Button>
+                        {isSolved ? (
+                            <Badge>
+                                Solved
+                            </Badge>
+                        ) : (
+                            <Button variant={"outline"} size={"icon"} onClick={() => setOpenDeleteDialog(true)}>
+                                <Trash size={16} className="text-destructive cursor-pointer" />
+                            </Button>
+                        )}
                     </div>
                     <div className="flex items-center gap-x-3">
                         <Badge variant="secondary" className="text-xs">
@@ -44,14 +57,26 @@ export const QuizCard = ({ quiz }: { quiz: Quiz }) => {
                     </div>
                 </CardContent>
                 <CardFooter className="flex items-center gap-x-2 justify-between">
-                    <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => router.push(`/quiz/${quiz.id}`)}
-                    >
-                        <ListChecks size={16} />
-                        Start Quiz
-                    </Button>
+                    {
+                        isSolved ? (
+                            <Button
+                                size="sm"
+                                onClick={() => router.push(`/quiz/${quiz.id}/result`)}
+                            >
+                                <ListChecks size={16} />
+                                View Result
+                            </Button>
+                        ) : (
+                            <Button
+                                variant="outline"
+                                size="sm"
+                                onClick={() => router.push(`/quiz/${quiz.id}`)}
+                            >
+                                <CirclePlay size={16} />
+                                Start Quiz
+                            </Button>
+                        )
+                    }
                     <Button
                         variant="outline"
                         size="sm"

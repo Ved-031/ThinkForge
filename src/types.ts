@@ -23,6 +23,8 @@ export type Quiz = {
     additional_info_context?: string,
 }
 
+export type Result = Record<string, Record<string, string>>;
+
 export enum Difficulty {
     EASY = 'EASY',
     MEDIUM = 'MEDIUM',

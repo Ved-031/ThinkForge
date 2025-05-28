@@ -1,7 +1,10 @@
 import { BookCheck, Mic, TrendingUpIcon, Users } from "lucide-react";
 
+import { Quizzes } from "@/lib/data";
+
 import { Badge } from "@/components/ui/badge";
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+
 
 export function SectionCards() {
     return (
@@ -10,7 +13,7 @@ export function SectionCards() {
                 <CardHeader className="relative">
                     <CardDescription>Total Quizzes</CardDescription>
                     <CardTitle className="@[250px]/card:text-3xl text-2xl font-semibold tabular-nums">
-                        3
+                        {Quizzes.length}
                     </CardTitle>
                     <div className="absolute right-4 top-4">
                         <Badge variant="outline" className="rounded-lg text-xs">
@@ -19,12 +22,12 @@ export function SectionCards() {
                     </div>
                 </CardHeader>
                 <CardFooter className="flex-col items-start gap-1 text-sm text-muted-foreground">
-                    No quizzes completed yet
+                    Total number of quizzes created
                 </CardFooter>
             </Card>
             <Card className="@container/card">
                 <CardHeader className="relative">
-                    <CardDescription>Students Attempted</CardDescription>
+                    <CardDescription>Students Submissions</CardDescription>
                     <CardTitle className="@[250px]/card:text-3xl text-2xl font-semibold tabular-nums">
                         0
                     </CardTitle>
@@ -35,14 +38,14 @@ export function SectionCards() {
                     </div>
                 </CardHeader>
                 <CardFooter className="flex-col items-start gap-1 text-sm text-muted-foreground">
-                    No student has attempted any quiz yet
+                    No student has submmited quiz 
                 </CardFooter>
             </Card>
             <Card className="@container/card">
                 <CardHeader className="relative">
                     <CardDescription>Assignments Reviewed (Mock)</CardDescription>
                     <CardTitle className="@[250px]/card:text-3xl text-2xl font-semibold tabular-nums">
-                        3
+                        0
                     </CardTitle>
                     <div className="absolute right-4 top-4">
                         <Badge variant="outline" className="rounded-lg text-xs">
@@ -58,7 +61,7 @@ export function SectionCards() {
                 <CardHeader className="relative">
                     <CardDescription>Oral Tests Simulated (Mock)</CardDescription>
                     <CardTitle className="@[250px]/card:text-3xl text-2xl font-semibold tabular-nums">
-                        2
+                        0
                     </CardTitle>
                     <div className="absolute right-4 top-4">
                         <Badge variant="outline" className="rounded-lg text-xs">

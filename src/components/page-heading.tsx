@@ -21,7 +21,6 @@ export const PageHeading = ({ title, helperText, showBackButton=false }: PageHea
                     variant={"outline"}
                     size={"icon"}
                     onClick={() => router.back()}
-                    className="bg-gray-100"
                 >
                     <ChevronLeft size={16} />
                 </Button>
