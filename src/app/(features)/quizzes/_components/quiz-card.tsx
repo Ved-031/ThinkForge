@@ -20,7 +20,7 @@ export const QuizCard = ({ quiz }: { quiz: Quiz }) => {
     return (
         <>
             <DeleteQuizDialog open={openDeleteDialog} onOpen={setOpenDeleteDialog} />
-            <Card className="shadow-none border-none min-w-[400px]">
+            <Card className="shadow-sm min-w-[400px]">
                 <CardContent className="flex flex-col gap-y-4">
                     <div className="flex items-center justify-between">
                         <div>

@@ -16,11 +16,11 @@ import {
 
 export const Navbar = () => {
     return (
-        <div className="flex items-center justify-between w-full h-13 md:h-16 px-3 border-b border-b-gray-200">
+        <div className="flex items-center justify-between w-full h-13 md:h-16 px-3 border-b border-b-gray-200 bg-gray-100">
             <SidebarTrigger />
             <div className="flex items-center gap-2">
                 <Badge>
-                    Teacher
+                    Role: TEACHER
                 </Badge>
                 <DropdownMenu>
                     <DropdownMenuTrigger className="cursor-pointer" asChild>

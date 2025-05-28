@@ -33,7 +33,7 @@ const QuizzesPage = () => {
             </div>
             <div className="mt-10">
                 <h1 className="text-xl md:text-2xl font-bold">Previous Quizzes</h1>
-                <div className="mt-5 flex items-center gap-5 flex-wrap">
+                <div className="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {
                         Quizzes.length === 0 ? (
                             <Card
