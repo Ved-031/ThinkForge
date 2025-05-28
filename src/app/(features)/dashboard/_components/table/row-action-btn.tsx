@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { CircleHelp, ListCheck, MoreHorizontal, SquarePen, Trash } from "lucide-react";
+import { CircleHelp, ListCheck, MoreHorizontal, Trash } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -40,10 +40,6 @@ export const RowActionBtn = ({ id }: { id: string }) => {
                     <DropdownMenuItem onClick={() => router.push(`/quiz/${id}/submissions`)}>
                         <ListCheck className="size-3" />
                         Submissions
-                    </DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => router.push(`/quiz/${id}/edit`)}>
-                        <SquarePen className="size-3" />
-                        Edit
                     </DropdownMenuItem>
                     <DropdownMenuItem
                         onClick={() => setOpenDeleteDialog(true)}
