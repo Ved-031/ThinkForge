@@ -11,7 +11,7 @@ interface LogoProps {
 
 export const Logo = ({ iconClassname, titleClassname }: LogoProps) => {
     return (
-        <Link href="/" className="flex items-center gap-x-1">
+        <Link href="/" className="flex items-center gap-x-2">
             <LucideBookOpenText
                 className={cn(
                     "size-9",

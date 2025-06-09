@@ -162,4 +162,5 @@ body,
 html,
 :root {
   height: 100%;
+  scroll-behavior: smooth !important;
 }

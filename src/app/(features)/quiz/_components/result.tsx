@@ -47,6 +47,7 @@ export const Result = ({ quiz }: ResultProps) => {
             <PageHeading
                 title={`Quiz Result: ${quiz.subject} (${quiz.topic})`}
                 helperText={`You scored ${correctAnswers} out of ${quiz.num_questions}.`}
+                showBackButton
             />
             <Card className="mt-5">
                 <CardHeader>
