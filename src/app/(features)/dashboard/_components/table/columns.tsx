@@ -25,9 +25,9 @@ export type QuizForTable = {
 }
 
 const DifficultyColorMap: Record<string, string> = {
-    [Difficulty.EASY]: "bg-emerald-200/60 text-emerald-500 border-emerald-200",
-    [Difficulty.MEDIUM]: "bg-yellow-200/60 text-yellow-500 border-yellow-200",
-    [Difficulty.HARD]: "bg-red-200/60 text-red-500 border-red-200"
+    [Difficulty.EASY]: "bg-emerald-200/60 text-emerald-600 border-emerald-200 dark:bg-emerald-900/30 dark:text-emerald-400 dark:border-emerald-800",
+    [Difficulty.MEDIUM]: "bg-yellow-200/60 text-yellow-600 border-yellow-200 dark:bg-yellow-900/30 dark:text-yellow-400 dark:border-yellow-800",
+    [Difficulty.HARD]: "bg-red-200/60 text-red-600 border-red-200 dark:bg-red-900/30 dark:text-red-400 dark:border-red-800"
 }
 
 export const columns: ColumnDef<QuizForTable>[] = [

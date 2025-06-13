@@ -5,7 +5,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { CirclePlay, ListChecks, Trash } from "lucide-react";
 
-import { Quiz } from "@/types";
+import { cn } from "@/lib/utils";
+import { Difficulty, Quiz } from "@/types";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -18,6 +19,12 @@ interface QuizCardProps {
     quiz: Quiz;
     isSolved?: boolean;
 }
+
+const DifficultyColorMap: Record<string, string> = {
+    [Difficulty.EASY]: "bg-emerald-200/60 text-emerald-600 border-emerald-200 dark:bg-emerald-900/30 dark:text-emerald-400 dark:border-emerald-800",
+    [Difficulty.MEDIUM]: "bg-yellow-200/60 text-yellow-600 border-yellow-200 dark:bg-yellow-900/30 dark:text-yellow-400 dark:border-yellow-800",
+    [Difficulty.HARD]: "bg-red-200/60 text-red-600 border-red-200 dark:bg-red-900/30 dark:text-red-400 dark:border-red-800"
+};
 
 
 export const QuizCard = ({ quiz, isSolved }: QuizCardProps) => {
@@ -39,7 +46,12 @@ export const QuizCard = ({ quiz, isSolved }: QuizCardProps) => {
                                 Solved
                             </Badge>
                         ) : (
-                            <Button variant={"outline"} size={"icon"} onClick={() => setOpenDeleteDialog(true)}>
+                            <Button
+                                variant={"outline"}
+                                size={"icon"}
+                                onClick={() => setOpenDeleteDialog(true)}
+                                className="hover:bg-gray-100"
+                            >
                                 <Trash size={16} className="text-destructive cursor-pointer" />
                             </Button>
                         )}
@@ -48,10 +60,13 @@ export const QuizCard = ({ quiz, isSolved }: QuizCardProps) => {
                         <Badge variant="secondary" className="text-xs">
                             {quiz.questions.length} Questions
                         </Badge>
-                        <Badge variant="secondary" className="text-xs">
+                        <Badge variant="secondary" className={cn(
+                            "text-xs",
+                            DifficultyColorMap[quiz.difficulty]
+                        )}>
                             {quiz.difficulty}
                         </Badge>
-                        <Badge variant="secondary" className="text-xs">
+                        <Badge variant="outline" className="text-xs">
                             {format(new Date(quiz.createdAt), "PPP")}
                         </Badge>
                     </div>

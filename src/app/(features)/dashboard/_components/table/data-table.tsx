@@ -83,7 +83,7 @@ export function DataTable<TData, TValue>({
                 />
                 <DataTableViewOptions table={table} />
             </div>
-            <div className="rounded-xl border bg-white overflow-hidden">
+            <div className="rounded-xl border overflow-hidden">
                 <Table className="">
                     <TableHeader className="bg-muted">
                         {table.getHeaderGroups().map((headerGroup) => (

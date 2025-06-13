@@ -81,7 +81,7 @@ const QuizzesPage = () => {
             </div>
             {/* All Quizzes */}
             <div className="mt-10">
-                <div className="flex items-center gap-4">
+                <div className="flex items-center justify-between">
                     <h1 className="text-xl md:text-2xl font-bold">Quizzes</h1>
                     <Input
                         type="search"
