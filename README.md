@@ -30,5 +30,5 @@ ThinkForge is a next-generation AI-powered educational platform designed to tran
 ```bash
 git clone https://github.com/Ved-031/thinkforge.git
 cd thinkforge
-npm install
+npm install --legacy-peer-deps
 npm run dev
