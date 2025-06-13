@@ -1,7 +1,7 @@
-import CommingSoon from "@/components/coming-soon";
+import { SignInForm } from "../_components/sign-in-form";
 
 const SignInPage = () => {
-    return <CommingSoon />
+    return <SignInForm />;
 }
 
 export default SignInPage;
